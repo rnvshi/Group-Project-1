@@ -1,18 +1,23 @@
 // Define the API endpoint 
-const baseUrl = "https://app.ticketmaster.com/discovery/v2/";
+const baseUrl = "https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&dmaId=324&apikey=yjLgPaMdPhUktIidIED0EDQYea5nxDmM"
+
+
 const endpoint = "events.json";
 
 // Define the required parameters
 const apiKey = 'yjLgPaMdPhUktIidIED0EDQYea5nxDmM'
 
 ;
-const location = {
-  city: "New York",
+const eventLocation = {
+  city: "",
   countryCode: "US"
 };
 
+
 // Build the full URL
-const url = `${baseUrl}${endpoint}?apikey=${apiKey}&city=${location.city}&countryCode=${location.countryCode}`;
+const url = `${baseUrl}&city=${eventLocation.city}&countryCode=${eventLocation.countryCode}`;
+
+
 
 // Make the API request
 fetch(url)
@@ -36,3 +41,5 @@ fetch(url)
     // Insert the HTML string into the event list container
     eventList.innerHTML = eventsHtml;
   });
+ 
+ 
