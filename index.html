@@ -13,7 +13,8 @@
     <link rel="stylesheet" href="style.css" />
 </head>
 
-<body>
+  <body>
+
     <!-- hero image at 20% -->
     <!-- <div class="hero"></div> -->
     <div class="top-left">
@@ -34,6 +35,18 @@
     </nav>
 
     <main>
+        <h1>Upcoming Events</h1>
+    <label for="artist-name">Artist Name:</label>
+    <input type="text" id="artist-name" placeholder="Enter artist name">
+    <label for="start-date">Start Date:</label>
+    <label for="city-select">Select a city:</label>
+    <select id="city-select">
+    <input type="date" id="start-date" placeholder="yyyy-mm-dd">
+    <label for="end-date">End Date:</label>
+    <input type="date" id="end-date" placeholder="yyyy-mm-dd">
+    <button id="submit-button">Submit</button>
+    <div id="event-list"></div>
+    
         <!-- left side column to list musicians with live gigs -->
         <div class="leftSide">
             <h2>Music in your city:</h2>
@@ -46,6 +59,7 @@
                 <li>band 6</li>
             </ul>
         </div>
+        
         <!-- right side is music image, name of artist, favourites, bio and song -->
         <div class="rightSide">
             <h2>Spotlight</h2>
@@ -64,6 +78,7 @@
         <strong>&copy; edX Carleton Bootcamp 2022-2023</strong>
     </footer>
     <!-- script.js -->
+        <script src="script.js"></script>
     <link rel="script" href="./script.js" />
 
 
