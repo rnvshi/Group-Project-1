@@ -37,7 +37,7 @@ h1 {
     height: 500px;
     width: 100%;
     margin-bottom: 10px;
-    background-image: url("images/bandcrowd.jpg");
+    background-image: url("/images/bandcrowd.jpg");
     background-size: cover;
     background-position: center;
 
@@ -47,6 +47,6 @@ h1 {
     height: 100px;
     width: 100px;
     margin-bottom: 0px;
-    background-image: url("images/LSSlogo.png");
+    background-image: url("/images/LSSlogo.png");
 
 }
