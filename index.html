@@ -19,11 +19,17 @@
     <!-- <div class="hero"></div> -->
     <div class="top-left">
         <div class="logo"></div>
+        <img src="images/LSSlogo.png" alt="logo" >
+    </div>
+    <div class="background-image"></div>
+    <img src="images/bandcrowd.jpg" alt="background-image">
+
+
         <h1>Live Sound Searcher</h1>
     </div>
     </div>
 
-    <!-- <img src="images/LSS logo.png" alt="LSS logo" 50px> -->
+    
     <!-- buttons - city  - date - GO -->
 
     <nav>
@@ -44,7 +50,7 @@
             <label for="end-date">End Date:</label>
             <input type="date" id="end-date" placeholder="yyyy-mm-dd">
             <button id="submit-button">Submit</button>
-
+            
 
             <div class="content">
                 <!-- left side column to list musicians with live gigs -->
@@ -64,6 +70,15 @@
                     </ul>
                 </div>
             </div>
+            <button id="modalBtn">Open Modal</button>
+
+<div id="modal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Modal content goes here</p>
+  </div>
+</div>
+
 
 
     </main>
@@ -72,7 +87,7 @@
     </footer>
 
     <!-- script.js -->
-        <script src="script.js"></script>
+        <script src="assets/js/script.js"></script>
     <link rel="script" href="./script.js" />
       <script src="./assets/js/spotifyscript.js"></script>
 
