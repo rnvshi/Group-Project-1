@@ -109,13 +109,74 @@ let test = fetch(url)
 
    });
    // Get the modal
-var modal = document.getElementById("modal");
+   var modalBtn = document.getElementById("modalBtn");
+   var modal = document.getElementById("modal");
+   var closeBtn = document.getElementsByClassName("close")[0];
+   
+   modalBtn.addEventListener("click", openModal);
+   closeBtn.addEventListener("click", closeModal);
+   window.addEventListener("click", outsideClick);
+   
+   function openModal() {
+     modal.style.display = "block";
+   }
+   
+   function closeModal() {
+     modal.style.display = "none";
+   }
+   
+   function outsideClick(e) {
+     if (e.target == modal) {
+       modal.style.display = "none";
+     }
+   }
+   var dateButton = document.querySelector("button.date-button");
+dateButton.addEventListener("click", function() {
+  // Get the start date and end date input fields
+  var startDateInput = document.getElementById("start-date");
+  var endDateInput = document.getElementById("end-date");
 
-// Get the button that opens the modal
-var btn = document.getElementById("modalBtn");
+  // Get the values entered in the input fields
+  var startDate = startDateInput.value;
+  var endDate = endDateInput.value;
 
-// Get the <span> element that closes the modal
-var span = document.getElements
+  // Validate the input dates
+  if(!startDate || !endDate){
+      alert("please select a start date and an end date");
+      return;
+  }
+  // Check if end date is greater than start date
+  if (startDate >= endDate) {
+    alert("End date should be greater than start date.");
+    return;
+  }
+  // If the input is valid, use the start and end date to filter the events
+  filterEventsByDate(startDate, endDate);
+});
+
+function filterEventsByDate(startDate, endDate) {
+  // Code to filter events based on the start and end date
+  // This could involve making an API call to a database, or
+  // filtering through an existing array of events in your JavaScript code
+  var filteredEvents = events.filter(function(event) {
+    return event.date >= startDate && event.date <= endDate;
+  });
+
+  // Update the event list with the filtered events
+  updateEventList(filteredEvents);
+}
+
+function updateEventList(events) {
+  // Code to update the event list on the page with the provided events
+  var eventList = document.getElementById("event-list");
+  eventList.innerHTML = "";
+  events.forEach(function(event) {
+    var eventItem = document.createElement("div");
+    eventItem.innerHTML = event.name + " - " + event.date;
+    eventList.appendChild(eventItem);
+  });
+}
+
 
 
 

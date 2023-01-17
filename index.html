@@ -34,8 +34,10 @@
 
     <nav>
         <button>City</button>
-        <button>Dates</button>
+        <button>start-date</button>
+        <button>end-date</button>
         <button>GO</button>
+        <button class="date-button">Dates</button>
     </nav>
 
     <main>
@@ -43,13 +45,15 @@
         <label for="artist-name">Artist Name:</label>
         <input type="text" id="artist-name" placeholder="Enter artist name">
         <label for="start-date">Start Date:</label>
-        <label for="city-select">Select a city:</label>
-
-        <select id="city-select">
-            <input type="date" id="start-date" placeholder="yyyy-mm-dd">
-            <label for="end-date">End Date:</label>
-            <input type="date" id="end-date" placeholder="yyyy-mm-dd">
-            <button id="submit-button">Submit</button>
+        <input type="date" id="start-date" placeholder="yyyy-mm-dd">
+        <label for="end-date">End Date:</label>
+        <input type="date" id="end-date" placeholder="yyyy-mm-dd">
+        <button id="submit-button">Submit</button>
+        <div class="content">
+            <div class="leftSide">
+                <div id="event-list"></div>
+            </div>
+        
             
 
             <div class="content">
