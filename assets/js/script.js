@@ -1,17 +1,26 @@
 // Define the API endpoint 
 const baseUrl = "https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&dmaId=324&apikey=yjLgPaMdPhUktIidIED0EDQYea5nxDmM"
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 5d15c0e (add js code)
 const endpoint = "events.json";
 
 // Define the required parameters
 const apiKey = 'yjLgPaMdPhUktIidIED0EDQYea5nxDmM'
 
+<<<<<<< HEAD
   ;
+=======
+;
+>>>>>>> 5d15c0e (add js code)
 const eventLocation = {
   city: "",
   countryCode: "US"
 };
 
+<<<<<<< HEAD
 // Build the full URL
 const url = `${baseUrl}&city=${eventLocation.city}&countryCode=${eventLocation.countryCode}`;
 
@@ -20,10 +29,23 @@ let test = fetch(url)
   .then(response => response.json())
   .then(data => {
 
+=======
+
+// Build the full URL
+const url = `${baseUrl}&city=${eventLocation.city}&countryCode=${eventLocation.countryCode}`;
+
+
+
+// Make the API request
+fetch(url)
+  .then(response => response.json())
+  .then(data => {
+>>>>>>> 5d15c0e (add js code)
     // Get the event list container
     const eventList = document.getElementById("event-list");
 
     // Create an HTML string for the events
+<<<<<<< HEAD
 
     const eventsHtml = data._embedded.events
 
@@ -108,3 +130,27 @@ let test = fetch(url)
     // eventList.innerHTML = eventsHtml;
 
   });
+=======
+    const eventsHtml = data._embedded.events
+      .map(
+        event =>
+          `<div>
+            <h2>${event.name}</h2>
+            <p>${event.dates.start.localDate}</p>
+            <p>${event._embedded.venues[0].name}</p>
+          </div>`
+      )
+      .join("");  
+
+    // Insert the HTML string into the event list container
+    
+    eventList.innerHTML = eventsHtml;
+  
+    });
+
+
+
+
+
+
+>>>>>>> 5d15c0e (add js code)
