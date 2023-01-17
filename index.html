@@ -19,17 +19,17 @@
     <!-- <div class="hero"></div> -->
     <div class="top-left">
         <div class="logo"></div>
-        <img src="images/LSSlogo.png" alt="logo" >
+        <img src="images/LSSlogo.png" alt="logo">
     </div>
     <div class="background-image"></div>
     <img src="images/bandcrowd.jpg" alt="background-image">
 
 
-        <h1>Live Sound Searcher</h1>
+    <h1>Live Sound Searcher</h1>
     </div>
     </div>
 
-    
+
     <!-- buttons - city  - date - GO -->
 
     <nav>
@@ -50,32 +50,31 @@
         <input type="date" id="end-date" placeholder="yyyy-mm-dd">
         <button id="submit-button">Submit</button>
 
-            <div class="content">
-                <!-- left side column to list musicians with live gigs -->
-                <div class="leftSide">
-                    <div id="event-list"></div>
-                </div>
-
-                <!-- right side is music image, name of artist, favourites, bio and song -->
-                <div class="rightSide">
-                    <h2>Spotlight</h2>
-                    <ul>
-                        <li>photo</li>
-                        <li>Artist name</li>
-                        <li>favourite</li>
-                        <li>song to play</li>
-                        <li>biography</li>
-                    </ul>
-                </div>
+        <div class="content">
+            <!-- left side column to list musicians with live gigs -->
+            <div class="leftSide">
+                <div id="event-list"></div>
             </div>
-            <button id="modalBtn">Open Modal</button>
 
-<div id="modal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <p>Modal content goes here</p>
-  </div>
-</div>
+            <!-- right side is music image, name of artist, favourites, bio and song -->
+            <div class="rightSide">
+                <h2>Spotlight</h2>
+                <img id="spotlightAvi">
+                <h3 id="spotlightName"></h3>
+                <iframe style="border-radius:12px" src="" width="100%" height="352" frameBorder="0" allowfullscreen=""
+                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                    loading="lazy"></iframe>
+                <p id="spotlightBio"></p>
+            </div>
+        </div>
+        <button id="modalBtn">Open Modal</button>
+
+        <div id="modal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <p>Modal content goes here</p>
+            </div>
+        </div>
 
 
 
@@ -85,9 +84,8 @@
     </footer>
 
     <!-- script.js -->
-        <script src="assets/js/script.js"></script>
-    <link rel="script" href="./script.js" />
-      <script src="./assets/js/spotifyscript.js"></script>
+    <script src="assets/js/script.js"></script>
+
 
 
 
