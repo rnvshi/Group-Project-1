@@ -42,4 +42,44 @@ fetch(url)
     eventList.innerHTML = eventsHtml;
   });
  
- 
+ // Get the city select and date inputs
+const citySelect = document.getElementById("city-select");
+const startDateInput = document.getElementById("start-date");
+const endDateInput = document.getElementById("end-date");
+
+submitButton.addEventListener("click", () => {
+  // Get the selected city and date range
+  const city = citySelect.value;
+  const startDate = startDateInput.value;
+  const endDate = endDateInput.value;
+
+  // Build the full URL with the updated parameters
+  let url = baseUrl;
+  if (city) {
+    url += `&city=${city}`;
+  }
+  if (startDate) {
+    url += `&startDateTime=${startDate}T00:00:00Z`;
+  }
+  if (endDate) {
+    url += `&endDateTime=${endDate}T00:00:00Z`;
+  }
+
+  // Make the API request with the updated URL
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      // Get the event list container
+      const eventList = document.getElementById("event-list");
+      
+      // Create an HTML string for the events
+      const eventsHtml = data._embedded.events
+        .map(event => `<div>
+            <h2>${event.name}</h2>
+            <p>${event.dates.start.localDate}</p>
+            <p>${event._embedded.venues[0].name}</p>
+          </div>`)
+        .join("");
+
+      // Insert the HTML string into the event list container
+      eventList.innerHTML = eventsHtml;}
