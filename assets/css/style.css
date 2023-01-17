@@ -50,3 +50,21 @@ h1 {
     background-image: url("/images/LSSlogo.png");
 
 }
+
+.leftSide {
+    border: solid black 3px;
+    width: 49%;
+}
+
+.rightSide {
+    border: solid pink 3px;
+    width: 49%;
+}
+
+.content {
+    border: solid gold 3px;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+}
