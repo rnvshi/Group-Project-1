@@ -1,4 +1,4 @@
-let artist = "Don+Toliver";
+let artist = "Don Toliver";
 
 const options = {
     method: 'GET',
