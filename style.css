@@ -1,0 +1,52 @@
+flexbox {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+nav {
+    display: flex;
+    justify-content: flex-end;
+    background-color: #1d1d1c;
+    font: white;
+}
+
+body {
+    font-family: Arial;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    justify-content: flex-start;
+}
+
+header {
+    width: 100%;
+    background-image: linear-gradient();
+
+}
+
+h1 {
+    color: blueviolet;
+    font-size: 60px;
+    font-style: oblique;
+    font-weight: 900;
+}
+
+.hero {
+    height: 500px;
+    width: 100%;
+    margin-bottom: 10px;
+    background-image: url("images/bandcrowd.jpg");
+    background-size: cover;
+    background-position: center;
+
+}
+
+.logo {
+    height: 100px;
+    width: 100px;
+    margin-bottom: 0px;
+    background-image: url("images/LSSlogo.png");
+
+}
