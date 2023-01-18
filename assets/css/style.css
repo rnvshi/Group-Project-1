@@ -9,11 +9,11 @@ nav {
     justify-content: flex-end;
     background-color: #1d1d1c;
     font: white;
-    border: solid red 3px;
+    border: none;
 }
 
 .userInput {
-    border: solid red 3px;
+    border: none;
 }
 
 body {
@@ -54,7 +54,7 @@ header {
 }
 
 h1 {
-    color: blueviolet;
+    color: rgb(255, 104, 16);
     font-size: 60px;
     font-style: oblique;
     font-weight: 900;
