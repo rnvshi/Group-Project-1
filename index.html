@@ -22,49 +22,44 @@
         <h1 id="top-heading">Live Sound Searcher</h1>
     </header>
 
-    <!-- buttons - city  - date - GO -->
-
-    <!-- <nav>
-        <button>City</button>
-        <button>start-date</button>
-        <button>end-date</button>
-        <button>GO</button>
-        <button class="date-button">Dates</button>
-    </nav> -->
-
     <main>
-        <div class="userInput">
-            <h1>Upcoming Events</h1>
-            <label for="artist-name">City Name:</label>
-            <input type="text" id="city-name" placeholder="Enter city name">
-            <label for="start-date">Start Date:</label>
-            <input type="date" id="start-date" placeholder="yyyy-mm-dd">
-            <label for="end-date">End Date:</label>
-            <input type="date" id="end-date" placeholder="yyyy-mm-dd">
-            <button id="submit-button">GO</button>
+        <div class="searchBar">
+            <div class="userInput">
+                <label for="artist-name">City Name:</label>
+                <input type="text" id="city-name" placeholder="Enter city name">
+                <label for="start-date">Start Date:</label>
+                <input type="date" id="start-date" placeholder="yyyy-mm-dd">
+                <label for="end-date">End Date:</label>
+                <input type="date" id="end-date" placeholder="yyyy-mm-dd">
+                <button id="submit-button">GO</button>
+            </div>
         </div>
 
         <div class="content">
             <!-- left side column to list musicians with live gigs -->
             <div class="leftSide">
+                <h1 id="events">Upcoming Events</h1>
                 <div id="event-list"></div>
             </div>
 
             <!-- right side is music image, name of artist, favourites, bio and song -->
             <div class="rightSide">
                 <h1>Spotlight</h1>
-                <img id="spotlightAvi">
-                <h3 id="spotlightName"></h3>
-                <iframe style="border-radius:12px" src="" width="75%" height="350" frameBorder="0" allowfullscreen=""
-                    allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
-                    loading="lazy"></iframe>
+                <div id="spotlightCard">
+                    <img id="spotlightAvi">
+                    <h3 id="spotlightName"></h3>
+                    <iframe style="border-radius:12px" src="" width="75%" height="350" frameBorder="0"
+                        allowfullscreen=""
+                        allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+                        loading="lazy"></iframe>
 
-                <button id="modalBtn">Read Artist Biography</button>
+                    <button id="modalBtn">Read Artist Biography</button>
 
-                <div id="modal" class="modal">
-                    <div class="modal-content">
-                        <span class="close">&times;</span>
-                        <p id="spotlightBio"></p>
+                    <div id="modal" class="modal">
+                        <div class="modal-content">
+                            <span class="close">&times;</span>
+                            <p id="spotlightBio"></p>
+                        </div>
                     </div>
                 </div>
             </div>

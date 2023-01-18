@@ -74,9 +74,12 @@ let test = fetch(url)
               .then(response => response.json())
               .then(response => {
 
+                let spotlightCard = document.getElementById("spotlightCard");
                 let spotlightAvi = document.getElementById("spotlightAvi");
                 let spotlightName = document.getElementById("spotlightName");
                 let spotlightBio = document.getElementById("spotlightBio");
+
+                spotlightCard.classList.add("spotlightCard");
 
                 spotlightAvi.src = artistSpotlight.visuals.avatarImage.sources[0].url;
                 spotlightName.textContent = artistSpotlight.profile.name;
