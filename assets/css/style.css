@@ -125,6 +125,10 @@ nav {
     width: 80%;
 }
 
+#modalBtn {
+    display: none;
+}
+
 #spotlightAvi {
     display: block;
     margin-left: auto;
