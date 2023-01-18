@@ -63,23 +63,12 @@ let test = fetch(url)
           .then(response => {
 
             let retrieveInfo = JSON.parse(JSON.stringify(response)).artists;
-            console.log(retrieveInfo);
-
             let artistSpotlight = retrieveInfo.items[0].data; // selects the top search query for artist input
-            console.log(artistSpotlight);
-
-            console.log(artistSpotlight.profile);
-            console.log(artistSpotlight.profile.name); // artist name
-            console.log(artistSpotlight.visuals.avatarImage.sources[0].url); // artist image
-            console.log(artistSpotlight.uri.split(":")[2]); // artist uri => input into track search fetch
-
-            let artistID = artistSpotlight.uri.split(":")[2];
+            let artistID = artistSpotlight.uri.split(":")[2]; // artist uri => input into track search fetch
 
             fetch('https://spotify23.p.rapidapi.com/artist_overview/?id=' + artistID, options)
               .then(response => response.json())
               .then(response => {
-
-                console.log(response.data.artist.discography.popularReleases.items); // top track in popular releases
 
                 let spotlightAvi = document.getElementById("spotlightAvi");
                 let spotlightName = document.getElementById("spotlightName");
@@ -88,10 +77,12 @@ let test = fetch(url)
                 spotlightAvi.src = artistSpotlight.visuals.avatarImage.sources[0].url;
                 spotlightName.textContent = artistSpotlight.profile.name;
 
-                let spotlightTrack = document.querySelector("iframe");
+                let spotlightAlbum = document.querySelector("iframe");
                 let albumCode = response.data.artist.discography.popularReleases.items[0].releases.items[0].id;
+                spotlightAlbum.src = "https://open.spotify.com/embed/album/" + albumCode + "?utm_source=generator";
 
-                spotlightTrack.src = "https://open.spotify.com/embed/album/" + albumCode + "?utm_source=generator";
+                let modalBtn = document.getElementById("modalBtn");
+                modalBtn.style.display = "block";
 
                 spotlightBio.textContent = response.data.artist.profile.biography.text;
 
