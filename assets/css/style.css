@@ -4,16 +4,22 @@ flexbox {
     box-sizing: border-box;
 }
 
-nav {
-    display: flex;
-    justify-content: flex-end;
-    background-color: #1d1d1c;
-    font: white;
-    border: none;
+.searchBar {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    border-radius: 50px;
+    height: 100px;
+    color: white;
+    background-color: black;
+    width: 75%;
+    text-align: center;
 }
 
 .userInput {
-    border: none;
+    position: relative;
+    top: 20px;
 }
 
 body {
@@ -60,34 +66,34 @@ h1 {
     font-weight: 900;
 }
 
-.hero {
-    height: 0.2vh;
-    width: 100%;
-    margin-bottom: 10px;
-    background-image: url("images/bandcrowd.jpg");
-    background-size: cover;
-    background-position: center;
-    z-index: -10;
-    position: relative;
-
-}
-
 .logo {
     height: 50px;
     width: 50px;
     display: block;
     margin-bottom: 0 auto;
-
-
 }
 
 .leftSide {
     width: 49%;
 }
 
+#events {
+    text-align: center;
+}
+
 .rightSide {
     width: 49%;
     text-align: center;
+}
+
+.spotlightCard {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+    background: linear-gradient(white, lightslategray);
+    border-radius: 50px;
+    width: 80%;
 }
 
 #modalBtn {
@@ -117,6 +123,10 @@ h1 {
     background-color: white;
     border-radius: 50px;
     height: fit-content;
+}
+
+.eventCard:hover {
+    opacity: 75%;
 }
 
 .artistBtn {
@@ -197,4 +207,12 @@ nav {
     width: 300px;
     border-radius: 50%;
     margin-left: auto;
+}
+
+#submit-button {
+    padding: 20px;
+    background-color: rgb(255, 104, 16);
+    border: none;
+    color: white;
+    border-radius: 50px;
 }
