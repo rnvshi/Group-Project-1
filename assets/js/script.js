@@ -174,6 +174,41 @@ function updateEventList(events) {
   });
 }
 
+// Add an event listener to the form's submit button
+const form = document.getElementById("event-search-form");
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  
+  // Update the eventLocation object with the user's input
+  eventLocation.city = document.getElementById("city-input").value;
+  eventLocation.date = document.getElementById("date-input").value;
+  
+  // Build the full URL with the updated eventLocation object
+  const url = `${baseUrl}&city=${eventLocation.city}&countryCode=${eventLocation.countryCode}&startDateTime=${eventLocation.date}`;
+
+  // Make the new API request with the updated URL
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      // Get the event list container
+      const eventList = document.getElementById("event-list");
+  
+      // Create an HTML string for the events
+      const eventsHtml = data._embedded.events
+        .map(
+          event =>
+            `<div>
+              <h2>${event.name}</h2>
+              <p>${event.dates.start.localDate}</p>
+              <p>${event._embedded.venues[0].name}</p>
+            </div>`
+        )
+        .join("");
+  
+      // Insert the HTML string into the event list container
+      eventList.innerHTML = eventsHtml;
+    });
+});
 
 
 
