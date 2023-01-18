@@ -27,8 +27,6 @@ let test = fetch(url)
 
     const eventsHtml = data._embedded.events
 
-    console.log(data._embedded.events);
-
     for (i = 0; i < (data._embedded.events).length; i++) {
 
       let h2 = document.createElement("h2");
@@ -81,8 +79,22 @@ let test = fetch(url)
               .then(response => response.json())
               .then(response => {
 
-                console.log(response.data.artist.discography.popularReleases.items[0].releases.items[0]); // top track in popular releases
-                console.log(response.data.artist.profile.biography.text); // artist biography
+                console.log(response.data.artist.discography.popularReleases.items); // top track in popular releases
+
+                let spotlightAvi = document.getElementById("spotlightAvi");
+                let spotlightName = document.getElementById("spotlightName");
+                let spotlightBio = document.getElementById("spotlightBio");
+
+                spotlightAvi.src = artistSpotlight.visuals.avatarImage.sources[0].url;
+                spotlightName.textContent = artistSpotlight.profile.name;
+
+                let spotlightTrack = document.querySelector("iframe");
+                let albumCode = response.data.artist.discography.popularReleases.items[0].releases.items[0].id;
+
+                spotlightTrack.src = "https://open.spotify.com/embed/album/" + albumCode + "?utm_source=generator";
+
+                spotlightBio.textContent = response.data.artist.profile.biography.text;
+
               })
               .catch(err => console.error(err));
 
@@ -92,46 +104,33 @@ let test = fetch(url)
 
     };
 
-    //     .map(
-    //     event =>
-    //       `<div>
-    //           <h2>${event.name}</h2>
-    //           <p>${event.dates.start.localDate}</p>
-    //           <p>${event._embedded.venues[0].name}</p>
-    //           <p>${JSON.stringify(event._embedded.attractions[0].name)}</p>
-    //           <button class = "spotify">${"Spotify"}</button>
-    //         </div > `
-    //   )
-    // .join("");
+  });
 
-    //Insert the HTML string into the event list container
-    // eventList.innerHTML = eventsHtml;
+// Get the modal
+var modalBtn = document.getElementById("modalBtn");
+var modal = document.getElementById("modal");
+var closeBtn = document.getElementsByClassName("close")[0];
 
-   });
-   // Get the modal
-   var modalBtn = document.getElementById("modalBtn");
-   var modal = document.getElementById("modal");
-   var closeBtn = document.getElementsByClassName("close")[0];
-   
-   modalBtn.addEventListener("click", openModal);
-   closeBtn.addEventListener("click", closeModal);
-   window.addEventListener("click", outsideClick);
-   
-   function openModal() {
-     modal.style.display = "block";
-   }
-   
-   function closeModal() {
-     modal.style.display = "none";
-   }
-   
-   function outsideClick(e) {
-     if (e.target == modal) {
-       modal.style.display = "none";
-     }
-   }
-   var dateButton = document.querySelector("button.date-button");
-dateButton.addEventListener("click", function() {
+modalBtn.addEventListener("click", openModal);
+closeBtn.addEventListener("click", closeModal);
+window.addEventListener("click", outsideClick);
+
+function openModal() {
+  modal.style.display = "block";
+}
+
+function closeModal() {
+  modal.style.display = "none";
+}
+
+function outsideClick(e) {
+  if (e.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+var dateButton = document.querySelector("button.date-button");
+dateButton.addEventListener("click", function () {
   // Get the start date and end date input fields
   var startDateInput = document.getElementById("start-date");
   var endDateInput = document.getElementById("end-date");
@@ -141,9 +140,9 @@ dateButton.addEventListener("click", function() {
   var endDate = endDateInput.value;
 
   // Validate the input dates
-  if(!startDate || !endDate){
-      alert("please select a start date and an end date");
-      return;
+  if (!startDate || !endDate) {
+    alert("please select a start date and an end date");
+    return;
   }
   // Check if end date is greater than start date
   if (startDate >= endDate) {
@@ -158,7 +157,7 @@ function filterEventsByDate(startDate, endDate) {
   // Code to filter events based on the start and end date
   // This could involve making an API call to a database, or
   // filtering through an existing array of events in your JavaScript code
-  var filteredEvents = events.filter(function(event) {
+  var filteredEvents = events.filter(function (event) {
     return event.date >= startDate && event.date <= endDate;
   });
 
@@ -170,7 +169,7 @@ function updateEventList(events) {
   // Code to update the event list on the page with the provided events
   var eventList = document.getElementById("event-list");
   eventList.innerHTML = "";
-  events.forEach(function(event) {
+  events.forEach(function (event) {
     var eventItem = document.createElement("div");
     eventItem.innerHTML = event.name + " - " + event.date;
     eventList.appendChild(eventItem);
