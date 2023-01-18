@@ -29,6 +29,8 @@ let test = fetch(url)
 
     for (i = 0; i < (data._embedded.events).length; i++) {
 
+      let div = document.createElement("div");
+      div.classList.add("eventCard");
       let h2 = document.createElement("h2");
       h2.textContent = eventsHtml[i].name;
       let p1 = document.createElement("p");
@@ -38,11 +40,13 @@ let test = fetch(url)
       let artistBtn = document.createElement("button");
       artistBtn.textContent = "Spotify";
       artistBtn.dataset.artist = eventsHtml[i]._embedded.attractions[0].name;
+      artistBtn.classList.add("artistBtn");
 
-      eventList.appendChild(h2);
-      eventList.appendChild(p1);
-      eventList.appendChild(p2);
-      eventList.appendChild(artistBtn);
+      div.appendChild(h2);
+      div.appendChild(p1);
+      div.appendChild(p2);
+      div.appendChild(artistBtn);
+      eventList.appendChild(div);
 
       artistBtn.addEventListener("click", () => {
         console.log("this has been clicked");

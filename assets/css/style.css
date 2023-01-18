@@ -9,6 +9,11 @@ nav {
     justify-content: flex-end;
     background-color: #1d1d1c;
     font: white;
+    border: solid red 3px;
+}
+
+.userInput {
+    border: solid red 3px;
 }
 
 body {
@@ -18,12 +23,34 @@ body {
     flex-direction: column;
     min-height: 100vh;
     justify-content: flex-start;
+    background-color: lightslategray;
 }
 
 header {
     width: 100%;
-    background-image: linear-gradient();
+    height: 300px;
+}
 
+#header-img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    z-index: -10;
+    position: absolute;
+}
+
+#logo {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+    height: 50%;
+    position: relative;
+    top: 20px;
+}
+
+#top-heading {
+    text-align: center;
 }
 
 h1 {
@@ -55,21 +82,54 @@ h1 {
 }
 
 .leftSide {
-    border: solid black 3px;
     width: 49%;
 }
 
 .rightSide {
-    border: solid pink 3px;
     width: 49%;
+    text-align: center;
+}
+
+#modalBtn {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    bottom: 100px;
+    background-color: black;
+    color: white;
+    padding: 10px;
+    border-radius: 50px;
+    border: none;
 }
 
 .content {
-    border: solid gold 3px;
     display: flex;
     flex-wrap: wrap;
     flex-direction: row;
     justify-content: center;
+}
+
+.eventCard {
+    padding: 20px;
+    padding-left: 50px;
+    margin: 5px;
+    background-color: white;
+    border-radius: 50px;
+    height: fit-content;
+}
+
+.artistBtn {
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border-radius: 50px;
+    border: none;
+    cursor: pointer;
+}
+
+footer {
+    text-align: center;
 }
 
 h1 {

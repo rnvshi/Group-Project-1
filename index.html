@@ -15,20 +15,12 @@
 
 <body>
 
-    <!-- hero image at 20% -->
-    <!-- <div class="hero"></div> -->
-    <div class="top-left">
-        <div class="logo"></div>
-        <img src="images/LSSlogo.png" alt="logo">
-    </div>
-    <div class="background-image"></div>
-    <img src="images/bandcrowd.jpg" alt="background-image">
-
-
-    <h1>Live Sound Searcher</h1>
-    </div>
-    </div>
-
+    <!-- header -->
+    <header id="header-background">
+        <img src="images/bandcrowd.jpg" id="header-img" alt="header">
+        <img src="images/LSSlogo.png" id="logo" alt="logo">
+        <h1 id="top-heading">Live Sound Searcher</h1>
+    </header>
 
     <!-- buttons - city  - date - GO -->
 
@@ -41,14 +33,16 @@
     </nav>
 
     <main>
-        <h1>Upcoming Events</h1>
-        <label for="artist-name">Artist Name:</label>
-        <input type="text" id="artist-name" placeholder="Enter artist name">
-        <label for="start-date">Start Date:</label>
-        <input type="date" id="start-date" placeholder="yyyy-mm-dd">
-        <label for="end-date">End Date:</label>
-        <input type="date" id="end-date" placeholder="yyyy-mm-dd">
-        <button id="submit-button">Submit</button>
+        <div class="userInput">
+            <h1>Upcoming Events</h1>
+            <label for="artist-name">Artist Name:</label>
+            <input type="text" id="artist-name" placeholder="Enter artist name">
+            <label for="start-date">Start Date:</label>
+            <input type="date" id="start-date" placeholder="yyyy-mm-dd">
+            <label for="end-date">End Date:</label>
+            <input type="date" id="end-date" placeholder="yyyy-mm-dd">
+            <button id="submit-button">Submit</button>
+        </div>
 
         <div class="content">
             <!-- left side column to list musicians with live gigs -->
@@ -61,7 +55,7 @@
                 <h2>Spotlight</h2>
                 <img id="spotlightAvi">
                 <h3 id="spotlightName"></h3>
-                <iframe style="border-radius:12px" src="" width="100%" height="352" frameBorder="0" allowfullscreen=""
+                <iframe style="border-radius:12px" src="" width="75%" height="350" frameBorder="0" allowfullscreen=""
                     allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                     loading="lazy"></iframe>
 
