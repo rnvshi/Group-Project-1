@@ -182,6 +182,7 @@ submit.addEventListener("click", () => {
   
 
   console.log(storedCity);
+});
   
   
 //   // Build the full URL
