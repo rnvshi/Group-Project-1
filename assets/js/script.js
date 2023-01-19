@@ -1,5 +1,5 @@
 // Define the API endpoint 
-const baseUrl = "https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&dmaId=324&apikey=yjLgPaMdPhUktIidIED0EDQYea5nxDmM"
+const baseUrl = "https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&dmaId=200&apikey=yjLgPaMdPhUktIidIED0EDQYea5nxDmM"
 
 const endpoint = "events.json";
 
@@ -127,8 +127,8 @@ function outsideClick(e) {
   }
 }
 
-var dateButton = document.querySelector("button.date-button");
-dateButton.addEventListener("click", function () {
+//var dateButton = document.querySelector("button.date-button");
+//dateButton.addEventListener("click", function () {
   // Get the start date and end date input fields
   var startDateInput = document.getElementById("start-date");
   var endDateInput = document.getElementById("end-date");
@@ -139,17 +139,17 @@ dateButton.addEventListener("click", function () {
 
   // Validate the input dates
   if (!startDate || !endDate) {
-    alert("please select a start date and an end date");
-    return;
+    alert("please select a start-date and an end-date");
+    ;
   }
   // Check if end date is greater than start date
   if (startDate >= endDate) {
-    alert("End date should be greater than start date.");
-    return;
+    alert("End-date should be greater than start-date.");
+    
   }
   // If the input is valid, use the start and end date to filter the events
   filterEventsByDate(startDate, endDate);
-});
+
 
 function filterEventsByDate(startDate, endDate) {
   // Code to filter events based on the start and end date
