@@ -1,5 +1,5 @@
 // Define the API endpoint 
-const baseUrl = "https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&dmaId=324&apikey=yjLgPaMdPhUktIidIED0EDQYea5nxDmM"
+const baseUrl = "https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&dmaId=200&apikey=yjLgPaMdPhUktIidIED0EDQYea5nxDmM"
 
 const endpoint = "events.json";
 
@@ -27,10 +27,10 @@ let test = fetch(url)
 
     const eventsHtml = data._embedded.events
 
-    console.log(data._embedded.events);
-
     for (i = 0; i < (data._embedded.events).length; i++) {
 
+      let div = document.createElement("div");
+      div.classList.add("eventCard");
       let h2 = document.createElement("h2");
       h2.textContent = eventsHtml[i].name;
       let p1 = document.createElement("p");
@@ -40,11 +40,13 @@ let test = fetch(url)
       let artistBtn = document.createElement("button");
       artistBtn.textContent = "Spotify";
       artistBtn.dataset.artist = eventsHtml[i]._embedded.attractions[0].name;
+      artistBtn.classList.add("artistBtn");
 
-      eventList.appendChild(h2);
-      eventList.appendChild(p1);
-      eventList.appendChild(p2);
-      eventList.appendChild(artistBtn);
+      div.appendChild(h2);
+      div.appendChild(p1);
+      div.appendChild(p2);
+      div.appendChild(artistBtn);
+      eventList.appendChild(div);
 
       artistBtn.addEventListener("click", () => {
         console.log("this has been clicked");
@@ -65,24 +67,32 @@ let test = fetch(url)
           .then(response => {
 
             let retrieveInfo = JSON.parse(JSON.stringify(response)).artists;
-            console.log(retrieveInfo);
-
             let artistSpotlight = retrieveInfo.items[0].data; // selects the top search query for artist input
-            console.log(artistSpotlight);
-
-            console.log(artistSpotlight.profile);
-            console.log(artistSpotlight.profile.name); // artist name
-            console.log(artistSpotlight.visuals.avatarImage.sources[0].url); // artist image
-            console.log(artistSpotlight.uri.split(":")[2]); // artist uri => input into track search fetch
-
-            let artistID = artistSpotlight.uri.split(":")[2];
+            let artistID = artistSpotlight.uri.split(":")[2]; // artist uri => input into track search fetch
 
             fetch('https://spotify23.p.rapidapi.com/artist_overview/?id=' + artistID, options)
               .then(response => response.json())
               .then(response => {
 
-                console.log(response.data.artist.discography.popularReleases.items[0].releases.items[0]); // top track in popular releases
-                console.log(response.data.artist.profile.biography.text); // artist biography
+                let spotlightCard = document.getElementById("spotlightCard");
+                let spotlightAvi = document.getElementById("spotlightAvi");
+                let spotlightName = document.getElementById("spotlightName");
+                let spotlightBio = document.getElementById("spotlightBio");
+
+                spotlightCard.classList.add("spotlightCard");
+
+                spotlightAvi.src = artistSpotlight.visuals.avatarImage.sources[0].url;
+                spotlightName.textContent = artistSpotlight.profile.name;
+
+                let spotlightAlbum = document.querySelector("iframe");
+                let albumCode = response.data.artist.discography.popularReleases.items[0].releases.items[0].id;
+                spotlightAlbum.src = "https://open.spotify.com/embed/album/" + albumCode + "?utm_source=generator";
+
+                let modalBtn = document.getElementById("modalBtn");
+                modalBtn.style.display = "block";
+
+                spotlightBio.textContent = response.data.artist.profile.biography.text;
+
               })
               .catch(err => console.error(err));
 
@@ -92,46 +102,33 @@ let test = fetch(url)
 
     };
 
-    //     .map(
-    //     event =>
-    //       `<div>
-    //           <h2>${event.name}</h2>
-    //           <p>${event.dates.start.localDate}</p>
-    //           <p>${event._embedded.venues[0].name}</p>
-    //           <p>${JSON.stringify(event._embedded.attractions[0].name)}</p>
-    //           <button class = "spotify">${"Spotify"}</button>
-    //         </div > `
-    //   )
-    // .join("");
+  });
 
-    //Insert the HTML string into the event list container
-    // eventList.innerHTML = eventsHtml;
+// Get the modal
+var modalBtn = document.getElementById("modalBtn");
+var modal = document.getElementById("modal");
+var closeBtn = document.getElementsByClassName("close")[0];
 
-   });
-   // Get the modal
-   var modalBtn = document.getElementById("modalBtn");
-   var modal = document.getElementById("modal");
-   var closeBtn = document.getElementsByClassName("close")[0];
-   
-   modalBtn.addEventListener("click", openModal);
-   closeBtn.addEventListener("click", closeModal);
-   window.addEventListener("click", outsideClick);
-   
-   function openModal() {
-     modal.style.display = "block";
-   }
-   
-   function closeModal() {
-     modal.style.display = "none";
-   }
-   
-   function outsideClick(e) {
-     if (e.target == modal) {
-       modal.style.display = "none";
-     }
-   }
-   var dateButton = document.querySelector("button.date-button");
-dateButton.addEventListener("click", function() {
+modalBtn.addEventListener("click", openModal);
+closeBtn.addEventListener("click", closeModal);
+window.addEventListener("click", outsideClick);
+
+function openModal() {
+  modal.style.display = "block";
+}
+
+function closeModal() {
+  modal.style.display = "none";
+}
+
+function outsideClick(e) {
+  if (e.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+//var dateButton = document.querySelector("button.date-button");
+//dateButton.addEventListener("click", function () {
   // Get the start date and end date input fields
   var startDateInput = document.getElementById("start-date");
   var endDateInput = document.getElementById("end-date");
@@ -141,24 +138,24 @@ dateButton.addEventListener("click", function() {
   var endDate = endDateInput.value;
 
   // Validate the input dates
-  if(!startDate || !endDate){
-      alert("please select a start date and an end date");
-      return;
+  if (!startDate || !endDate) {
+    alert("please select a start-date and an end-date");
+    ;
   }
   // Check if end date is greater than start date
   if (startDate >= endDate) {
-    alert("End date should be greater than start date.");
-    return;
+    alert("End-date should be greater than start-date.");
+    
   }
   // If the input is valid, use the start and end date to filter the events
   filterEventsByDate(startDate, endDate);
-});
+
 
 function filterEventsByDate(startDate, endDate) {
   // Code to filter events based on the start and end date
   // This could involve making an API call to a database, or
   // filtering through an existing array of events in your JavaScript code
-  var filteredEvents = events.filter(function(event) {
+  var filteredEvents = events.filter(function (event) {
     return event.date >= startDate && event.date <= endDate;
   });
 
@@ -170,13 +167,48 @@ function updateEventList(events) {
   // Code to update the event list on the page with the provided events
   var eventList = document.getElementById("event-list");
   eventList.innerHTML = "";
-  events.forEach(function(event) {
+  events.forEach(function (event) {
     var eventItem = document.createElement("div");
     eventItem.innerHTML = event.name + " - " + event.date;
     eventList.appendChild(eventItem);
   });
 }
 
+// Add an event listener to the form's submit button
+const form = document.getElementById("event-search-form");
+form.addEventListener("submit", (event) => {
+  event.preventDefault();
+  
+  // Update the eventLocation object with the user's input
+  eventLocation.city = document.getElementById("city-input").value;
+  eventLocation.date = document.getElementById("date-input").value;
+  
+  // Build the full URL with the updated eventLocation object
+  const url = `${baseUrl}&city=${eventLocation.city}&countryCode=${eventLocation.countryCode}&startDateTime=${eventLocation.date}`;
+
+  // Make the new API request with the updated URL
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      // Get the event list container
+      const eventList = document.getElementById("event-list");
+  
+      // Create an HTML string for the events
+      const eventsHtml = data._embedded.events
+        .map(
+          event =>
+            `<div>
+              <h2>${event.name}</h2>
+              <p>${event.dates.start.localDate}</p>
+              <p>${event._embedded.venues[0].name}</p>
+            </div>`
+        )
+        .join("");
+  
+      // Insert the HTML string into the event list container
+      eventList.innerHTML = eventsHtml;
+    });
+});
 
 
 
