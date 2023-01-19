@@ -147,7 +147,7 @@ submitButton.addEventListener("click", function () {
   console.log(endDate);
 
   // Validate the input dates
-  if (!startDate || !endDate) {
+  if (!startDate || !endDate || !cityInput) {
     alertInv.style.display = "block";
     alertText.textContent = "please input a valid city name & date range";
     return;
