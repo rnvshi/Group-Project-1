@@ -109,7 +109,7 @@ submit.addEventListener("click", () => {
     });
 });
 
-// Get the modal
+// Get the bio modal
 var modalBtn = document.getElementById("modalBtn");
 var modal = document.getElementById("modal");
 var closeBtn = document.getElementsByClassName("close")[0];
@@ -126,11 +126,14 @@ function closeModal() {
   modal.style.display = "none";
 }
 
-function outsideClick(e) {
-  if (e.target == modal) {
-    modal.style.display = "none";
-  }
-}
+// Get the alert modal
+var alert = document.getElementById("alert");
+var closeAlBtn = document.getElementById("closeAlert");
+let alertText = document.getElementById("alertText");
+
+closeAlBtn.addEventListener("click", () => {
+  alert.style.display = "none";
+});
 
 var submitButton = document.getElementById("submit-button");
 submitButton.addEventListener("click", function () {
@@ -143,21 +146,25 @@ submitButton.addEventListener("click", function () {
 
   // Validate the input dates
   if (!startDate || !endDate || !cityInput) {
-    alert("please input a valid city name & date range");
+    alert.style.display = "block";
+    alertText.textContent = "please input a valid city name & date range";
     return;
   }
 
-  if (!startDate || !endDate) {
-    alert("please select a start date and an end date");
-    ;
-  }
   // Check if end date is greater than start date
   if (startDate >= endDate) {
-    alert("end date should be greater than start date.");
-
+    alert.style.display = "block";
+    alertText.textContent = "end date should be greater than start date";
+    return;
   }
 });
 
-
+function outsideClick(e) {
+  if (e.target == modal) {
+    modal.style.display = "none";
+  } else if (e.target == alert) {
+    alert.style.display = "none";
+  }
+}
 
 

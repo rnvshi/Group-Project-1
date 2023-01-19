@@ -177,7 +177,8 @@ nav {
     }
 }
 
-.modal {
+.modal,
+.alert {
     display: none;
     /* hide the modal by default */
     position: fixed;
@@ -192,7 +193,8 @@ nav {
     background-color: rgba(0, 0, 0, 0.4);
 }
 
-.modal-content {
+.modal-content,
+.alert-content {
     background-color: #fefefe;
     margin: 15% auto;
     padding: 20px;
