@@ -22,6 +22,10 @@ flexbox {
     top: 20px;
 }
 
+#submit-button {
+    cursor: pointer;
+}
+
 body {
     font-family: Arial;
     margin: 0;
