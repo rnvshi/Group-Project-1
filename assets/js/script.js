@@ -12,7 +12,6 @@ submit.addEventListener("click", () => {
   city = document.getElementById("city-name").value;
   dateStart = document.getElementById("start-date").value;
   dateEnd = document.getElementById("end-date").value;
-
   // Build the full URL
   const url = `${baseUrl}&city=${city}&countryCode=US&startDateTime=${dateStart}T00:00:00Z&endDateTime=${dateEnd}T00:00:00Z`;
 
@@ -168,4 +167,45 @@ function outsideClick(e) {
   }
 }
 
+
+
+submit.addEventListener("click", () => {
+  // Get the city name from the input field
+  let city = document.getElementById("city-name").value;
+  
+  // Save the city name to local storage
+  localStorage.setItem("city", city);
+  
+  // Retrieve the city name from local storage
+  let storedCity = localStorage.getItem("city");
+
+  
+
+  console.log(storedCity);
+  
+  
+  // Build the full URL
+  const url = `${baseUrl}&city=${city}&countryCode=US&startDateTime=${dateStart}T00:00:00Z&endDateTime=${dateEnd}T00:00:00Z`;
+
+  // Make the API request
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      const eventList = document.getElementById("event-list");
+      let eventsHtml = "";
+      data._embedded.events.forEach(event => {
+         
+      });
+      eventList.innerHTML = eventsHtml;
+      
+    });
+});
+let storedCity = localStorage.getItem("city");
+let city = storedCity ? storedCity : document.getElementById("city-name").value;
+
+if(typeof(Storage) !== "undefined") {
+  // Code for localStorage/sessionStorage.
+} else {
+  // Sorry! No Web Storage support..
+}
 
