@@ -184,28 +184,28 @@ submit.addEventListener("click", () => {
   console.log(storedCity);
   
   
-  // Build the full URL
-  const url = `${baseUrl}&city=${city}&countryCode=US&startDateTime=${dateStart}T00:00:00Z&endDateTime=${dateEnd}T00:00:00Z`;
+//   // Build the full URL
+//   const url = `${baseUrl}&city=${city}&countryCode=US&startDateTime=${dateStart}T00:00:00Z&endDateTime=${dateEnd}T00:00:00Z`;
 
-  // Make the API request
-  fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      const eventList = document.getElementById("event-list");
-      let eventsHtml = "";
-      data._embedded.events.forEach(event => {
+//   // Make the API request
+//   fetch(url)
+//     .then(response => response.json())
+//     .then(data => {
+//       const eventList = document.getElementById("event-list");
+//       let eventsHtml = "";
+//       data._embedded.events.forEach(event => {
          
-      });
-      eventList.innerHTML = eventsHtml;
+//       });
+//       eventList.innerHTML = eventsHtml;
       
-    });
-});
-let storedCity = localStorage.getItem("city");
-let city = storedCity ? storedCity : document.getElementById("city-name").value;
+//     });
+// });
+// let storedCity = localStorage.getItem("city");
+// let city = storedCity ? storedCity : document.getElementById("city-name").value;
 
-if(typeof(Storage) !== "undefined") {
-  // Code for localStorage/sessionStorage.
-} else {
-  // Sorry! No Web Storage support..
-}
+// if(typeof(Storage) !== "undefined") {
+//   // Code for localStorage/sessionStorage.
+// } else {
+//   // Sorry! No Web Storage support..
+// }
 
