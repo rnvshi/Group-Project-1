@@ -13,9 +13,6 @@ submit.addEventListener("click", () => {
   dateStart = document.getElementById("start-date").value;
   dateEnd = document.getElementById("end-date").value;
 
-  console.log(dateStart);
-  console.log(dateEnd);
-
   // Build the full URL
   const url = `${baseUrl}&city=${city}&countryCode=US&startDateTime=${dateStart}T00:00:00Z&endDateTime=${dateEnd}T00:00:00Z`;
 
@@ -127,43 +124,47 @@ function closeModal() {
 }
 
 // Get the alert modal
-var alert = document.getElementById("alert");
+var alertInv = document.getElementById("alert");
 var closeAlBtn = document.getElementById("closeAlert");
 let alertText = document.getElementById("alertText");
 
 closeAlBtn.addEventListener("click", () => {
-  alert.style.display = "none";
+  alertInv.style.display = "none";
 });
 
 var submitButton = document.getElementById("submit-button");
 submitButton.addEventListener("click", function () {
   // Get the start date and end date input fields
   var startDateInput = document.getElementById("start-date");
+  let endDateInput = document.getElementById("end-date");
   let cityInput = document.getElementById("city-name").value;
 
   // Get the values entered in the input fields
   var startDate = startDateInput.value;
+  let endDate = endDateInput.value;
+
+  console.log(startDate);
+  console.log(endDate);
 
   // Validate the input dates
-  if (!startDate || !endDate || !cityInput) {
-    alert.style.display = "block";
+  if (!startDate || !endDate) {
+    alertInv.style.display = "block";
     alertText.textContent = "please input a valid city name & date range";
     return;
   }
-
-  // Check if end date is greater than start date
   if (startDate >= endDate) {
-    alert.style.display = "block";
-    alertText.textContent = "end date should be greater than start date";
+    alertInv.style.display = "block";
+    alertText.textContent = "End date should be greater than start date";
     return;
-  }
+  };
+
 });
 
 function outsideClick(e) {
   if (e.target == modal) {
     modal.style.display = "none";
-  } else if (e.target == alert) {
-    alert.style.display = "none";
+  } else if (e.target == alertInv) {
+    alertInv.style.display = "none";
   }
 }
 
